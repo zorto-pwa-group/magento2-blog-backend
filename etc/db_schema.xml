@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ztpwa_blog_post" resource="default" engine="innodb" comment="ZT PWA Blog Post Table">
+        <column xsi:type="smallint" name="post_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Post ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Post Title"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255"
+                comment="Post Identifier or URL Path"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Post Content"/>
+        <column xsi:type="mediumtext" name="short_content" nullable="true" comment="Post Short Content"/>
+        <column xsi:type="varchar" name="featured_img" nullable="true" length="255"
+                comment="Post Thumbnail Image Path"/>
+        <column xsi:type="smallint" name="author_id" nullable="false" padding="11"
+                comment="Post Author ID"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Post Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="true"
+                comment="Post Modification Time"/>
+        <column xsi:type="timestamp" name="publish_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Post Publish Time"/>
+        <column xsi:type="tinyint" name="is_recommended_post" padding="2" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Is Recommended Post"/>
+        <column xsi:type="tinyint" name="is_active" padding="2" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Post Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+        </constraint>
+        <index referenceId="PWA_BLOG_POST_IDX" indexType="fulltext">
+            <column name="title"/>
+            <column name="identifier"/>
+            <column name="content"/>
+            <column name="short_content"/>
+        </index>
+    </table>
+
+    <table name="ztpwa_blog_category" resource="default" engine="innodb" comment="ZT PWA Blog Category Table">
+        <column xsi:type="smallint" name="category_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Category ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Category Title"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255"
+                comment="Category Identifier or URL Path"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Category Content"/>
+        <column xsi:type="varchar" name="path" nullable="true" length="255"
+                comment="Category Tree Path"/>
+        <column xsi:type="tinyint" name="include_in_menu" padding="2" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Is Include In Menu"/>
+        <column xsi:type="tinyint" name="is_active" padding="2" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Category Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+    </table>
+
+    <table name="ztpwa_blog_post_category" resource="default" engine="innodb" comment="ZT PWA Blog Category Post Table">
+        <column xsi:type="smallint" name="inc_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Auto Increment ID"/>
+        <column xsi:type="smallint" name="post_id" nullable="false" padding="11" comment="Post ID"/>
+        <column xsi:type="smallint" name="category_id" nullable="false" padding="11" comment="Category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="inc_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_FIRST_FK_POST_ID" table="ztpwa_blog_post_category"
+                    column="post_id" referenceTable="ztpwa_blog_post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_SECOND_FK_CATEGORY_ID" table="ztpwa_blog_post_category"
+                    column="category_id" referenceTable="ztpwa_blog_category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="ztpwa_blog_tag" resource="default" engine="innodb" comment="ZT PWA Blog Tag Table">
+        <column xsi:type="smallint" name="tag_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Tag ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Tag Title"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255"
+                comment="Category Identifier or URL Path"/>
+        <column xsi:type="tinyint" name="is_active" padding="2" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Category Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tag_id"/>
+        </constraint>
+    </table>
+
+    <table name="ztpwa_blog_post_tag" resource="default" engine="innodb" comment="ZT PWA Blog Tag Post Table">
+        <column xsi:type="smallint" name="inc_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Auto Increment ID"/>
+        <column xsi:type="smallint" name="post_id" nullable="false" padding="11" comment="Post ID"/>
+        <column xsi:type="smallint" name="tag_id" nullable="false" padding="11" comment="Tag ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="inc_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_THIRD_FK_POST_ID" table="ztpwa_blog_post_tag"
+                    column="post_id" referenceTable="ztpwa_blog_post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_FOUR_FK_TAG_ID" table="ztpwa_blog_post_tag"
+                    column="tag_id" referenceTable="ztpwa_blog_tag" referenceColumn="tag_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="ztpwa_blog_post_relatedpost" resource="default" engine="innodb" comment="ZT PWA Blog Related Post Table">
+        <column xsi:type="smallint" name="inc_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Auto Increment ID"/>
+        <column xsi:type="smallint" name="post_id" nullable="false" padding="11" comment="Post ID"/>
+        <column xsi:type="smallint" name="related_id" nullable="false" padding="11" comment="Related Post ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="inc_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_RELATEDED_POST_POST_FK_POST_ID" table="ztpwa_blog_post_relatedpost"
+                    column="post_id" referenceTable="ztpwa_blog_post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_RELATEDED_POST_POSTR_FK_POST_ID" table="ztpwa_blog_post_relatedpost"
+                    column="related_id" referenceTable="ztpwa_blog_post" referenceColumn="post_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="ztpwa_blog_post_relatedproduct" resource="default" engine="innodb" comment="ZT PWA Blog Related Product Table">
+        <column xsi:type="smallint" name="inc_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Auto Increment ID"/>
+        <column xsi:type="smallint" name="post_id" nullable="false" padding="11" comment="Post ID"/>
+        <column xsi:type="int" name="related_id" nullable="false" padding="10" unsigned="true" comment="Related Product ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="inc_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_RELATEDED_PRODUCT_POST_FK_POST_ID" table="ztpwa_blog_post_relatedproduct"
+                    column="post_id" referenceTable="ztpwa_blog_post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PWA_BLOG_RELATEDED_PRODUCT_ENTITY_FK_POST_ID" table="ztpwa_blog_post_relatedproduct"
+                    column="related_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

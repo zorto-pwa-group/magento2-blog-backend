@@ -1,0 +1,97 @@
+{
+  "ztpwa_blog_post": {
+    "column": {
+      "post_id": true,
+      "title": true,
+      "identifier": true,
+      "content": true,
+      "short_content": true,
+      "author_id": true,
+      "featured_img": true,
+      "creation_time": true,
+      "publish_time": true,
+      "update_time": true,
+      "is_recommended_post": true,
+      "is_active": true
+    },
+    "index": {
+      "PWA_BLOG_POST_IDX": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  },
+  "ztpwa_blog_category": {
+    "column": {
+      "category_id": true,
+      "title": true,
+      "identifier": true,
+      "content": true,
+      "path": true,
+      "include_in_menu": true,
+      "is_active": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  },
+  "ztpwa_blog_post_category": {
+    "column": {
+      "inc_id": true,
+      "post_id": true,
+      "category_id": true
+    },
+    "constraint": {
+      "PRIMARY": true,
+      "PWA_BLOG_FIRST_FK_POST_ID": true,
+      "PWA_BLOG_SECOND_FK_CATEGORY_ID": true
+    }
+  },
+  "ztpwa_blog_tag": {
+    "column": {
+      "tag_id": true,
+      "title": true,
+      "identifier": true,
+      "is_active": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  },
+  "ztpwa_blog_post_tag": {
+    "column": {
+      "inc_id": true,
+      "post_id": true,
+      "tag_id": true
+    },
+    "constraint": {
+      "PRIMARY": true,
+      "PWA_BLOG_THIRD_FK_POST_ID": true,
+      "PWA_BLOG_FOUR_FK_TAG_ID": true
+    }
+  },
+  "ztpwa_blog_post_relatedpost": {
+    "column": {
+      "inc_id": true,
+      "post_id": true,
+      "related_id": true
+    },
+    "constraint": {
+      "PRIMARY": true,
+      "PWA_BLOG_RELATEDED_POST_POST_FK_POST_ID": true,
+      "PWA_BLOG_RELATEDED_POST_POSTR_FK_POST_ID": true
+    }
+  },
+  "ztpwa_blog_post_relatedproduct": {
+    "column": {
+      "inc_id": true,
+      "post_id": true,
+      "related_id": true
+    },
+    "constraint": {
+      "PRIMARY": true,
+      "PWA_BLOG_RELATEDED_PRODUCT_POST_FK_POST_ID": true,
+      "PWA_BLOG_RELATEDED_PRODUCT_ENTITY_FK_POST_ID": true
+    }
+  }
+}

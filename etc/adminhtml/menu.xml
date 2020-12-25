@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright ZT. All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PWA_Blog::elements" title="Blog" module="ZT_Blog" parent="Magento_Backend::content" sortOrder="10"  resource="PWA_Blog::elements"/>
+        <add id="PWA_Blog::post" title="Posts" module="ZT_Blog" parent="PWA_Blog::elements" sortOrder="10" action="pwablog/post" resource="PWA_Blog::post"/>
+        <add id="PWA_Blog::category" title="Categories" module="ZT_Blog" parent="PWA_Blog::elements" sortOrder="20" action="pwablog/category" resource="PWA_Blog::category"/>
+        <add id="PWA_Blog::tag" title="Tags" module="ZT_Blog" parent="PWA_Blog::elements" sortOrder="25" action="pwablog/tag" resource="PWA_Blog::tag"/>
+    </menu>
+</config>

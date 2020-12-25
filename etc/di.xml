@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright ZT. All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="ZT\Blog\Api\CategoryRepositoryInterface" type="ZT\Blog\Model\CategoryRepository" />
+    <preference for="ZT\Blog\Api\Data\CategoryInterface" type="ZT\Blog\Model\Category" />
+    <preference for="ZT\Blog\Api\PostRepositoryInterface" type="ZT\Blog\Model\PostRepository" />
+    <preference for="ZT\Blog\Api\Data\PostInterface" type="ZT\Blog\Model\Post" />
+    <preference for="ZT\Blog\Api\TagRepositoryInterface" type="ZT\Blog\Model\TagRepository" />
+    <preference for="ZT\Blog\Api\Data\TagInterface" type="ZT\Blog\Model\Tag" />
+    <virtualType name="ZT\Blog\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">pwa_blog/tmp</argument>
+            <argument name="basePath" xsi:type="string">pwa_blog</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="ZT\Blog\Controller\Adminhtml\Post\Upload\FeaturedImg">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">ZT\Blog\ImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="buildBlogFolder" xsi:type="object">ZT\Blog\Console\Command\BuildBlogFolder</item>
+                <item name="generateBlogPostThumbnail" xsi:type="object">ZT\Blog\Console\Command\GenerateBlogImage</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
