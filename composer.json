@@ -1,0 +1,16 @@
+{
+  "name": "zt/blog-backend",
+  "type": "library",
+  "description": "Zorto PWA backend(core) extension",
+  "keywords": ["pwa","blog","extension","backend"],
+  "homepage": "http://pwablog-m2.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zorto PWA",
+      "email": "zorto.pwa@gmail.com",
+      "homepage": "http://pwablog-m2.com/",
+      "role": "Developer"
+    }
+  ]
+}
