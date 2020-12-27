@@ -1,5 +1,5 @@
 {
-  "name": "zt/blog-backend",
+  "name": "zt2/blog-backend",
   "type": "library",
   "description": "Zorto PWA backend(core) extension",
   "keywords": ["pwa","blog","extension","backend"],
