@@ -2,7 +2,12 @@
   "name": "zt2/blog-backend",
   "type": "library",
   "description": "Zorto PWA backend(core) extension",
-  "keywords": ["pwa","blog","extension","backend"],
+  "keywords": [
+    "pwa",
+    "blog",
+    "extension",
+    "backend"
+  ],
   "homepage": "http://pwablog-m2.com/",
   "license": "MIT",
   "version": "1.0.1",
@@ -12,7 +17,9 @@
   },
   "minimum-stability": "stable",
   "autoload": {
-    "files": ["registration.php"],
+    "files": [
+      "registration.php"
+    ],
     "psr-4": {
       "ZT\\Blog\\": ""
     }
