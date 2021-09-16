@@ -24,7 +24,7 @@ class MassStatus extends AbstractTag
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::tag_save';
+    const ADMIN_RESOURCE = 'PWA_Blog::tag_save';
 
     /**
      * Execute action

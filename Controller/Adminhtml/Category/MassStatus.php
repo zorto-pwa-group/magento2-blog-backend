@@ -24,7 +24,7 @@ class MassStatus extends AbstractCategory
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::category_save';
+    const ADMIN_RESOURCE = 'PWA_Blog::category_save';
 
     /**
      * Execute action

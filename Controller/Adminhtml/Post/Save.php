@@ -27,7 +27,7 @@ class Save extends AbstractPost implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::post_save';
+    const ADMIN_RESOURCE = 'PWA_Blog::post_save';
 
     /**
      * Save action

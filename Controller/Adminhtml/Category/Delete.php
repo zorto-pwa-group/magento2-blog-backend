@@ -22,7 +22,7 @@ class Delete extends AbstractPost
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::post_delete';
+    const ADMIN_RESOURCE = 'PWA_Blog::post_delete';
 
     /**
      * Delete action

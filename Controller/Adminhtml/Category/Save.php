@@ -26,7 +26,7 @@ class Save extends AbstractCategory implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::category_save';
+    const ADMIN_RESOURCE = 'PWA_Blog::category_save';
 
     /**
      * Save action

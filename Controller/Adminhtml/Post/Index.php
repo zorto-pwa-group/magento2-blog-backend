@@ -21,7 +21,7 @@ class Index extends AbstractPost
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::post';
+    const ADMIN_RESOURCE = 'PWA_Blog::post';
 
     /**
      * Index action

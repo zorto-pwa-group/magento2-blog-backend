@@ -26,7 +26,7 @@ class Save extends AbstractTag implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::tag_save';
+    const ADMIN_RESOURCE = 'PWA_Blog::tag_save';
 
     /**
      * Save action

@@ -21,7 +21,7 @@ class Index extends AbstractTag
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::tag';
+    const ADMIN_RESOURCE = 'PWA_Blog::tag';
 
     /**
      * Index action

@@ -21,7 +21,7 @@ class Index extends AbstractCategory
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::catagory';
+    const ADMIN_RESOURCE = 'PWA_Blog::catagory';
 
     /**
      * Index action

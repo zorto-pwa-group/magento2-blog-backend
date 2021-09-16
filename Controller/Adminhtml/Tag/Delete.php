@@ -22,7 +22,7 @@ class Delete extends AbstractTag
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'ZT_Blog::tag_delete';
+    const ADMIN_RESOURCE = 'PWA_Blog::tag_delete';
 
     /**
      * Delete action
